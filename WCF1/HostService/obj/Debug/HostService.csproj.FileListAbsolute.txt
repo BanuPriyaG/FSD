@@ -1,0 +1,9 @@
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\bin\Debug\HostService.exe.config
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\bin\Debug\HostService.exe
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\bin\Debug\HostService.pdb
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\bin\Debug\WCF1.dll
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\bin\Debug\WCF1.pdb
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\bin\Debug\WCF1.dll.config
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\obj\Debug\HostService.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\obj\Debug\HostService.exe
+C:\Users\Admin\Desktop\FSD\WCF1\HostService\obj\Debug\HostService.pdb

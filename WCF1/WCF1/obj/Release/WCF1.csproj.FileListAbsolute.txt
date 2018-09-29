@@ -1,0 +1,6 @@
+C:\Users\Admin\Desktop\FSD\WCF1\WCF1\bin\WCF1.dll.config
+C:\Users\Admin\Desktop\FSD\WCF1\WCF1\bin\WCF1.dll
+C:\Users\Admin\Desktop\FSD\WCF1\WCF1\bin\WCF1.pdb
+C:\Users\Admin\Desktop\FSD\WCF1\WCF1\obj\Release\WCF1.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\FSD\WCF1\WCF1\obj\Release\WCF1.dll
+C:\Users\Admin\Desktop\FSD\WCF1\WCF1\obj\Release\WCF1.pdb

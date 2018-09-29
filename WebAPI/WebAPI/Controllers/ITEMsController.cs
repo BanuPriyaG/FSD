@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Description;
+using WebAPI;
+
+namespace WebAPI.Controllers
+{
+    public class ITEMsController : ApiController
+    {
+        private IStoreAppContext db = new PODbEntities();
+        public ITEMsController() { }
+        public ITEMsController(IStoreAppContext dbcontext)
+        {
+            db = dbcontext;
+        }
+        // GET: api/ITEMs
+        public IQueryable<ITEM> GetITEMs()
+        {
+            return db.ITEMs;
+        }
+
+        // GET: api/ITEMs/5
+        [ResponseType(typeof(ITEM))]
+        public IHttpActionResult GetITEM(string id)
+        {
+            ITEM iTEM = db.ITEMs.Find(id);
+            if (iTEM == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(iTEM);
+        }
+
+        // PUT: api/ITEMs/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutITEM(string id, ITEM iTEM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != iTEM.ITCODE)
+            {
+                return BadRequest();
+            }
+
+            db.MarkAsModified(iTEM);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ITEMExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/ITEMs
+        
+        public IHttpActionResult PostITEM(ITEM iTEM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.ITEMs.Add(iTEM);
+
+            try
+            {
+                return Ok(db.SaveChanges());
+            }
+            catch (DbUpdateException)
+            {
+                if (ITEMExists(iTEM.ITCODE))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            
+        }
+
+        // DELETE: api/ITEMs/5
+        [ResponseType(typeof(ITEM))]
+        public IHttpActionResult DeleteITEM(string id)
+        {
+            ITEM iTEM = db.ITEMs.Find(id);
+            if (iTEM == null)
+            {
+                return NotFound();
+            }
+
+            db.ITEMs.Remove(iTEM);
+            db.SaveChanges();
+
+            return Ok(iTEM);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool ITEMExists(string id)
+        {
+            return db.ITEMs.Count(e => e.ITCODE == id) > 0;
+        }
+    }
+}
