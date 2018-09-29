@@ -1,0 +1,115 @@
+﻿@model TwitterCloneApplication.Models.Person
+@{ 
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+@*<style>
+    #FirstrowParent {
+        padding: 0;
+    }
+
+    textarea {
+        float: left;
+        min-width:100px;
+        border-radius: 0.3em;
+        min-height: 150px;
+    }
+</style>
+<script>
+var message = document.getElementById(idTextarea).innerText;
+</script>*@
+@using (Html.BeginForm())
+{
+
+<div class="container">
+    <div>
+        <table>
+            <colgroup>
+                <col width="20%">
+                <col width="80%">
+            </colgroup>
+            <tr>
+                <td>
+                    Follow
+                    <input type="text" />
+                </td>
+                <td style="position:relative;padding-left:3%">
+                    <form action="@Url.Action("Create", "Tweets", new { userId = Model.user_id })" method="post">
+                        @Html.AntiForgeryToken()
+                        What are you doing?
+                        <br>
+                        @Html.TextArea("message", "message", new { @class = "form-control" }) 
+                        <br>
+                        <input type="submit" style="width:75px;position:relative;margin-left:80%" value="Update" class="btn btn-default"/>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    3 Tweets <br>
+                    1 Following <br>
+                    2 Followers <br>
+                </td>
+                <td>
+
+                    <table class="table">
+
+                        @foreach (var item in Model.Tweets)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Person.fullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.message)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.created)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+
+}
+    <!--<div>
+        <div id="FirstrowParent" class="row">
+            <div id="divFollow" class="col-md-3">
+                <h4 class="col-md-12">Follow</h4>
+                <input class="col-md-12" type="text" placeholder="Search Person" style="border-radius:3em;line-height:30px" />
+            </div>
+            <div id="divTypeTweet" class="col-md-9">
+                <div style="width:100%;float:left"><h4>What are you doing ?</h4></div>
+                <div class="col-md-12" style="float:left;padding:5px;width:100%">
+                    
+                    <textarea id="idTextarea">
+                       
+                    </textarea>
+               @*  @Html.TextAreaFor(Model=>Model.message, new { htmlAttributes = new { @class = "form-control" } })*@
+                    
+                </div>
+            </div>
+        </div>
+        <div id="btnDivision">
+            <button class="col-sm-1" style="float:right;margin:1%" onclick="">Update</button>
+        </div>
+        <div id="secondParent" class="row">
+            <div class="col-md-3" style="vertical-align:central">
+                <ul style="list-style-type:none;align-content:center">
+                    <li>Follwers</li>
+                    <li>Following</li>
+                    <li>Active</li>
+                </ul>
+            </div>
+            <div id="displayTweet" class="col-md-9" >
+                <h3>Tweets</h3>
+               <div style="border:solid 2px black;padding:0.5%">
+                   @*@{Html.RenderAction("DisplayTweets", "Tweets");}*@
+               </div>
+            </div>
+        </div>
+    </div>
+</div>-->

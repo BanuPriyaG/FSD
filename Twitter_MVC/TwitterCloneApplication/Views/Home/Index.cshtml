@@ -1,0 +1,36 @@
+﻿@model TwitterCloneApplication.Models.Person
+@{
+    ViewBag.Title = "Welcome to My Twitter Clone";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<form>
+    <h2>Welcome to My Twitter Clone </h2>
+    <div >
+        <hr data-content="Login" />
+        <div class="row form-group" >
+            @Html.Label("Username", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.user_id, new { htmlAttributes = new { @class = "form-control" } })
+            
+        </div>
+        <div class="row form-group" >
+            @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        <div class="form-group" >
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" style="position:relative;margin-left:195px"/>
+            </div>
+        </div>
+        <div >
+
+            <label>New User ?</label>
+            @Html.ActionLink("Signup", "Create", "Person")
+        </div>
+    </div>
+</form>
+}
+
+
